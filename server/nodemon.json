@@ -1,0 +1,6 @@
+{
+  "watch": ["./"],
+  "ext": "ts",
+  "ignore": ["**/*.test.ts", "tests/**/*.ts"],
+  "exec": "npx ts-node --esm server.ts"
+}

@@ -1,0 +1,10 @@
+.app {
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  width: 80%;
+  max-width: 800px;
+  min-height: calc(100lvh - 6rem);
+  background-color: var(--container-color);
+  box-shadow: var(--background-color) 0 .5rem 2rem, var(--background-color) 0 0 0 1px;
+  border-radius: 1rem;
+}

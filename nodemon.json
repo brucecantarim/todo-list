@@ -1,6 +1,0 @@
-{
-  "watch": ["api"],
-  "ext": "ts",
-  "ignore": ["api/**/*.spec.ts"],
-  "exec": "npx ts-node --esm ./api/main.ts"
-}
