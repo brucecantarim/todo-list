@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
   padding: var(--text-padding);
   color: var(--list-item-color);
   background-color: var(--list-item-background);
