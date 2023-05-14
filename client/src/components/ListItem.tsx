@@ -1,7 +1,8 @@
 import React from 'react';
 import { Todo } from '../App.tsx';
+import styles from 'ListItem.module.css';
 
-interface ListItemProps {
+export interface ListItemProps {
   item: Todo;
 }
 

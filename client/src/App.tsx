@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import styles from './App.module.css'
 
 import ListHeader from './components/ListHeader';
-import ListItem from './components/ListItem';
+import List from './components/List';
 import AddItemInput from './components/AddItemInput';
 
 export interface Todo {
@@ -48,13 +48,10 @@ function App() {
 
   return (
     <main className={styles.app}>
-      <ListHeader name={'My Tasks'} />
+      <ListHeader name={'My Tasks'} button='Delete all tasks' />
       <AddItemInput />
-      <h3>Todos</h3>
-      {getIncompletedTodos?.map((item: Todo) => <ListItem key={item.id} item={item} />)}
-      <br />
-      <h3>Done</h3>
-      {getCompletedTodos?.map((item: Todo) => <ListItem key={item.id} item={item} />)}
+      <List name='Todos' todos={getIncompletedTodos} />
+      <List name='Done' todos={getCompletedTodos} />
     </main>
   )
 }
