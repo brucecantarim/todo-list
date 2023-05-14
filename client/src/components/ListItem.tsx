@@ -1,6 +1,6 @@
 import React from 'react';
 import { Todo } from '../App.tsx';
-import styles from 'ListItem.module.css';
+import styles from './ListItem.module.css';
 
 export interface ListItemProps {
   item: Todo;
@@ -10,7 +10,7 @@ const ListItem: React.FC<ListItemProps> = ({ item }) => {
   const { id, task, isCompleted, createdAt, completedAt } = item;
 
   return (
-    <div>
+    <div className={styles.container}>
       {task}
     </div>
   );
