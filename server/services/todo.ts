@@ -34,7 +34,6 @@ class TodoService {
         id: result.id,
         task: result.task,
         isCompleted: Boolean(result.isCompleted),
-        createdAt: result.createdAt,
       };
     }
 
@@ -44,7 +43,7 @@ class TodoService {
   public insertTodo(task: string): Todo {
     const result = this.insertQuery.run(task);
     const { lastInsertRowid: id } = result;
-    return { id: id as number, task, isCompleted: false, createdAt: new Date().toISOString() };
+    return { id: id as number, task, isCompleted: false };
   }
 
   public updateTodoStatus(id: number, isCompleted: boolean): boolean {

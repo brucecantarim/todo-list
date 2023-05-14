@@ -15,8 +15,7 @@ class DatabaseManager {
         CREATE TABLE IF NOT EXISTS todos (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           task TEXT,
-          isCompleted INTEGER DEFAULT 0,
-          createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          isCompleted BIT DEFAULT 0
         )
       `);
     }

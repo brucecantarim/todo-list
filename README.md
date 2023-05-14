@@ -23,7 +23,7 @@ From the project root folder:
 npm run client
 ```
 
-After this, access the website through the link indicated by vite to see the app.
+After this, access the website through http://localhost:5173.
 
 ### To run the server in development mode:
 
