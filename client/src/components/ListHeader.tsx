@@ -9,7 +9,7 @@ const ListHeader: React.FC<ListHeaderProps> = ({ name }) => {
   return (
     <div className={styles.container}>
       <h2>{name}</h2>
-      <button>+</button>
+      <button>Delete all tasks</button>
     </div>
   );
 };

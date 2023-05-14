@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.button {
+  background-color: #2255ff;
+}
