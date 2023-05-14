@@ -22,8 +22,19 @@ class TodoService {
     this.deleteByIdQuery = this.db.prepare('DELETE FROM todos WHERE id = ?');
   }
 
+  private parseTodo(todo: Todo): Todo {
+    return {
+      id: todo.id,
+      task: todo.task,
+      isCompleted: Boolean(todo.isCompleted),
+      createdAt: todo.createdAt,
+      completedAt: todo.isCompleted ? todo.completedAt : null
+
+    }
+  }
+
   public getAllTodos(): Todo[] {
-    return this.getAllQuery.all() as Todo[];
+    return this.getAllQuery.all().map(todo => this.parseTodo(todo as Todo));
   }
 
   public getTodoById(id: number): Todo | undefined {
@@ -34,6 +45,8 @@ class TodoService {
         id: result.id,
         task: result.task,
         isCompleted: Boolean(result.isCompleted),
+        createdAt: result.createdAt,
+        completedAt: result.isCompleted ? result.completedAt : null
       };
     }
 
@@ -43,7 +56,7 @@ class TodoService {
   public insertTodo(task: string): Todo {
     const result = this.insertQuery.run(task);
     const { lastInsertRowid: id } = result;
-    return { id: id as number, task, isCompleted: false };
+    return { id: id as number, task, isCompleted: false, createdAt: new Date().toISOString(), completedAt: null };
   }
 
   public updateTodoStatus(id: number, isCompleted: boolean): boolean {

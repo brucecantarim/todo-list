@@ -30,6 +30,7 @@ export default function todoRoutes(app: Express): void {
 
   app.post('/api/todos', async (req: Request, res: Response, next: NextFunction) => {
     try {
+      console.log(req);
       const { task } = req.body;
       const newTodo = todoService.insertTodo(task);
       res.json(newTodo);
