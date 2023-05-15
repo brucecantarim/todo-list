@@ -1,4 +1,4 @@
-import { TodoState, Action } from './types';
+import { Todo, TodoState, Action } from './types';
 
 const reducer = (state: TodoState, action: Action): TodoState => {
   switch (action.type) {
@@ -22,6 +22,13 @@ const reducer = (state: TodoState, action: Action): TodoState => {
         ...state,
         todos: [...state.todos, action.payload],
         incompletedTodos: [...state.incompletedTodos, action.payload],
+      };
+    case 'DELETE_TODO':
+      return {
+        ...state,
+        todos: [...state.todos.filter(item => item.id !== action.payload.id)],
+        imcompletedTodos: [...state.incompletedTodos.filter(item => item.id !== action.payload.id)],
+        completedTodos: [...state.completedTodos.filter(item => item.id !== action.payload.id)]
       };
     default:
       return state;

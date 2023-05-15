@@ -33,7 +33,6 @@ class TodoService {
       isCompleted: Boolean(todo.isCompleted),
       createdAt: todo.createdAt,
       completedAt: todo.isCompleted ? todo.completedAt : null
-
     }
   }
 
@@ -84,8 +83,9 @@ class TodoService {
   public deleteTodoById(id: number): Todo | undefined {
     const todo = this.getTodoById(id);
     if (todo) {
+      const todoCopy = { ...todo };
       this.deleteByIdQuery.run(id);
-      return todo;
+      return todoCopy;
     }
     return undefined;
   }

@@ -52,3 +52,21 @@ export const createTodo = async (dispatch: React.Dispatch<Action>, task: string)
   }
 };
 
+export const deleteTodo = async (dispatch: React.Dispatch<Action>, id: number) => {
+  try {
+    const response = await fetch(`${URL}/api/todos/${id}`, {
+      method: 'delete',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    });
+    const data = await response.json();
+    if (data) {
+      dispatch({ type: 'DELETE_TODO', payload: data });
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+

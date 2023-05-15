@@ -39,7 +39,6 @@ export default function todoRoutes(app: Express): void {
 
   app.post('/api/todos', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      console.log(req);
       const { task } = req.body;
       const newTodo = todoService.insertTodo(task);
       res.json(newTodo);
@@ -74,8 +73,9 @@ export default function todoRoutes(app: Express): void {
       const deletedTodo = todoService.deleteTodoById(parseInt(id));
       if (deletedTodo) {
         res.json(deletedTodo);
+        return;
       } else {
-        res.status(404).json({ message: 'Todo not found' });
+        res.status(404).json({ message: 'DELETE: Todo not found' });
       }
     } catch (error) {
       next(error);
