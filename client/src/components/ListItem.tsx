@@ -1,6 +1,7 @@
 import React from 'react';
-import { Todo } from '../App.tsx';
+import { Todo } from '../hooks/useTodos.ts';
 import styles from './ListItem.module.css';
+import { Delete } from 'react-feather';
 
 export interface ListItemProps {
   item: Todo;
@@ -11,7 +12,11 @@ const ListItem: React.FC<ListItemProps> = ({ item }) => {
 
   return (
     <div className={styles.container}>
-      {task}
+      <div>
+        {!isCompleted && <input className={styles.checkbox} type='checkbox' />}
+        {task}
+      </div>
+      <Delete className={styles.delete} />
     </div>
   );
 };

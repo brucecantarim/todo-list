@@ -7,3 +7,12 @@
   background-color: var(--list-item-background);
   border-radius: var(--border-radius);
 }
+
+.checkbox {
+  margin: 0;
+  margin-right: 1ch;
+}
+
+.delete {
+  color: var(--red);
+}
