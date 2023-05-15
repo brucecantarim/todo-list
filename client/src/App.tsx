@@ -48,7 +48,7 @@ function App() {
 
   return (
     <main className={styles.app}>
-      <ListHeader name={'My Tasks'} button='Delete all tasks' />
+      <ListHeader name={'My Tasks'} button />
       <AddItemInput />
       <List name='Todos' todos={getIncompletedTodos} />
       <List name='Done' todos={getCompletedTodos} />

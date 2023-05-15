@@ -1,6 +1,36 @@
 .container {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+}
+
+.dialog {
+  text-align: center;
+}
+
+.dialog::backdrop {
+  pointer-events: none;
+  background: #0005;
+  backdrop-filter: blur(.5rem);
+}
+
+.actions {
+  display: flex;
+  align-self: flex-end;
+  gap: 1ch;
+  margin-top: 1rem;
+}
+
+.cancel {
+  background-color: var(--grey);
+}
+
+.confirm {
+  background-color: var(--red);
 }
