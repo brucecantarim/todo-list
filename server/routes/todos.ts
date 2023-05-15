@@ -5,10 +5,19 @@ export default function todoRoutes(app: Express): void {
 
   const todoService = new TodoService();
 
-  app.get('/api/todos', async (_: Request, res: Response, next: NextFunction) => {
+  app.get('/api/todos', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const todos = todoService.getAllTodos();
-      res.json(todos);
+      const { incompleted, completed } = req.query;
+      if (incompleted) {
+        const todos = todoService.getAllIncompletedTodos();
+        return res.json(todos);
+      } else if (completed) {
+        const todos = todoService.getAllCompletedTodos();
+        return res.json(todos);
+      } else {
+        const todos = todoService.getAllTodos();
+        return res.json(todos);
+      }
     } catch (error) {
       next(error);
     }

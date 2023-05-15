@@ -6,14 +6,14 @@ import List from './components/List';
 import AddItemInput from './components/AddItemInput';
 
 function App() {
-  const { completedTasks, incompletedTasks } = useTodos();
+  const { completedTodos, incompletedTodos } = useTodos();
 
   return (
     <main className={styles.app}>
       <ListHeader name={'My Tasks'} button />
       <AddItemInput />
-      <List name='Todos' todos={incompletedTasks} />
-      <List name='Done' todos={completedTasks} />
+      <List name='Todos' todos={incompletedTodos} />
+      <List name='Done' todos={completedTodos} />
     </main>
   )
 }

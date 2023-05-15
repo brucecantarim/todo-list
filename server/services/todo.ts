@@ -5,6 +5,8 @@ import { Todo } from '../models/todos.ts';
 class TodoService {
   private db: SqliteDatabase;
   private getAllQuery: Statement;
+  private getAllCompletedQuery: Statement;
+  private getAllIncompletedQuery: Statement;
   private getByIdQuery: Statement;
   private insertQuery: Statement;
   private updateStatusQuery: Statement;
@@ -14,7 +16,9 @@ class TodoService {
   constructor() {
     this.db = DatabaseManager.getInstance();
 
-    this.getAllQuery = this.db.prepare('SELECT * FROM todos ORDER BY task ASC');
+    this.getAllQuery = this.db.prepare('SELECT * FROM todos ORDER BY createdAt DESC');
+    this.getAllIncompletedQuery = this.db.prepare('SELECT * FROM todos WHERE isCompleted = 0 ORDER BY createdAt DESC');
+    this.getAllCompletedQuery = this.db.prepare('SELECT * FROM todos WHERE isCompleted = 1 ORDER BY completedAt DESC');
     this.getByIdQuery = this.db.prepare('SELECT * FROM todos WHERE id = ?');
     this.insertQuery = this.db.prepare('INSERT INTO todos (task) VALUES (?)');
     this.updateStatusQuery = this.db.prepare('UPDATE todos SET isCompleted = ? WHERE id = ?');
@@ -35,6 +39,14 @@ class TodoService {
 
   public getAllTodos(): Todo[] {
     return this.getAllQuery.all().map(todo => this.parseTodo(todo as Todo));
+  }
+
+  public getAllIncompletedTodos(): Todo[] {
+    return this.getAllIncompletedQuery.all().map(todo => this.parseTodo(todo as Todo));
+  }
+
+  public getAllCompletedTodos(): Todo[] {
+    return this.getAllCompletedQuery.all().map(todo => this.parseTodo(todo as Todo));
   }
 
   public getTodoById(id: number): Todo | undefined {
