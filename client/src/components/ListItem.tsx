@@ -8,7 +8,7 @@ export interface ListItemProps {
 }
 
 const ListItem: React.FC<ListItemProps> = ({ item }) => {
-  const { id, task, isCompleted, createdAt, completedAt } = item;
+  const { task, isCompleted } = item;
 
   return (
     <div className={styles.container}>

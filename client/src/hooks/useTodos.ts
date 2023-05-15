@@ -65,12 +65,35 @@ const useTodos = () => {
 
   useEffect(() => { getAllData(); getAllIncompletedTodos(); getAllCompletedTodos(); }, []);
 
-  useEffect(() => { todos && console.table(todos) }, [todos]);
+  const createTodo = async (task: string) => {
+    try {
+      const response = await fetch(`${URL}/api/todos`, {
+        method: "post",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          task
+        })
+      });
+      const data = await response.json();
+      if (data) {
+        setTodos([...todos, data]);
+        setIncompletedTodos([...todos, data]);
+      }
+      return data;
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return {
     todos,
     incompletedTodos,
-    completedTodos
+    completedTodos,
+    createTodo
   }
 };
 

@@ -16,9 +16,9 @@ class TodoService {
   constructor() {
     this.db = DatabaseManager.getInstance();
 
-    this.getAllQuery = this.db.prepare('SELECT * FROM todos ORDER BY createdAt DESC');
-    this.getAllIncompletedQuery = this.db.prepare('SELECT * FROM todos WHERE isCompleted = 0 ORDER BY createdAt DESC');
-    this.getAllCompletedQuery = this.db.prepare('SELECT * FROM todos WHERE isCompleted = 1 ORDER BY completedAt DESC');
+    this.getAllQuery = this.db.prepare('SELECT * FROM todos ORDER BY createdAt ASC');
+    this.getAllIncompletedQuery = this.db.prepare('SELECT * FROM todos WHERE isCompleted = 0 ORDER BY createdAt ASC');
+    this.getAllCompletedQuery = this.db.prepare('SELECT * FROM todos WHERE isCompleted = 1 ORDER BY completedAt ASC');
     this.getByIdQuery = this.db.prepare('SELECT * FROM todos WHERE id = ?');
     this.insertQuery = this.db.prepare('INSERT INTO todos (task) VALUES (?)');
     this.updateStatusQuery = this.db.prepare('UPDATE todos SET isCompleted = ? WHERE id = ?');
