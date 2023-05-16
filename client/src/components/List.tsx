@@ -23,7 +23,9 @@ const List: React.FC<ListProps> = ({ name, button, callback }) => {
         {filteredTodos.length > 0 ? (
           filteredTodos.map((item: Todo) => <ListItem key={item.id} item={item} />)
         ) : (
-          'No tasks found! Create a new one or go enjoy your day.'
+          name === 'Todos' ?
+            'No tasks found! Create a new one or go enjoy your day.' :
+            'No completed tasks yet. Work on your list in click the checkbox once it is done!'
         )}
       </div>
     </>

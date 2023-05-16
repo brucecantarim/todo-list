@@ -52,7 +52,8 @@ export default function todoRoutes(app: Express): void {
       const { id } = req.params;
       const { isCompleted } = req.body;
       const success = todoService.updateTodoStatus(parseInt(id), isCompleted);
-      res.json({ success });
+      const todo = todoService.getTodoById(parseInt(id));
+      res.json({ success, todo });
     } catch (error) {
       next(error);
     }

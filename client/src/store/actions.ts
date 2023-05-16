@@ -52,6 +52,25 @@ export const createTodo = async (dispatch: React.Dispatch<Action>, task: string)
   }
 };
 
+export const completeTodo = async (dispatch: React.Dispatch<Action>, id: number) => {
+  try {
+    const response = await fetch(`${URL}/api/todos/${id}`, {
+      method: 'put',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ isCompleted: true })
+    });
+    const { success, todo } = await response.json();
+    if (success) {
+      dispatch({ type: 'COMPLETE_TODO', payload: todo });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const deleteTodo = async (dispatch: React.Dispatch<Action>, id: number) => {
   try {
     const response = await fetch(`${URL}/api/todos/${id}`, {

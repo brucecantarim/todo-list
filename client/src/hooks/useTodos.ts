@@ -1,3 +1,12 @@
+/* Retired this hook in favor of implementing a store.
+ * This was due to the nature of React.
+ * Using this hook would not guarantee a rerender when
+ * needed, after adding, completing or deleting a task.
+ * The context Api is a solution for that issue that
+ * would require less workaround compared to the useHook
+ * I implemented here. Didn't want to force rerender in a 
+ * shady way.
+
 import { useState, useEffect } from 'react';
 
 export interface Todo {
@@ -25,9 +34,9 @@ const useTodos = () => {
     }
   };
 
-  /* Moved this logic moved to the API
-   * but left here commented as an example of how to separate the
-   * completed from the imcompleted tasks from one request only
+  // Moved this logic moved to the API
+  // but left here commented as an example of how to separate the
+  // completed from the imcompleted tasks from one request only
 
   const incompletedTasks = useMemo((): Todo[] => {
     return todos?.filter((todo: Todo) => todo.isCompleted === false)
@@ -41,7 +50,7 @@ const useTodos = () => {
         const completedAtB: any = new Date(b.completedAt);
         return completedAtA - completedAtB;
       });
-  }, [todos]); */
+  }, [todos]);
 
   const getAllIncompletedTodos = async () => {
     try {
@@ -97,4 +106,4 @@ const useTodos = () => {
   }
 };
 
-export default useTodos;
+export default useTodos; */
