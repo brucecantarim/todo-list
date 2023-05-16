@@ -5,6 +5,7 @@ const URL = `${import.meta.env.PROD || import.meta.env.NODE_ENV === 'production'
 
 export const fetchTodos = async (dispatch: React.Dispatch<Action>) => {
   try {
+    console.log(URL);
     const response = await fetch(`${URL}/api/todos`);
     const data = await response.json();
     dispatch({ type: 'SET_TODOS', payload: data });
