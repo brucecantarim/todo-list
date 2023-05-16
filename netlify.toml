@@ -1,7 +1,13 @@
 [build]
   command = "npm run build"
-  publish = "build"
+  publish = "client/dist"
 
 [build.environment]
-  REACT_APP_SERVER_ENDPOINT = "<your-production-server-endpoint>"
+  NODE_ENV = "production"
+
+[[redirects]]
+  from = "/api/*"
+  to = "http://localhost:3000/:splat"
+  status = 200
+  force = true
 

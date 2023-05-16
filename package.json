@@ -2,11 +2,7 @@
   "name": "todo-app",
   "version": "0.0.1",
   "scripts": {
-    "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install)",
-    "server": "cd server && npm run start",
-    "client": "cd client && npm run dev"
-  },
-  "dependencies": {
-    "if-env": "^1.0.4"
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start"
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Action } from './types';
 
-const URL = `${import.meta.env.PROD ? import.meta.env.BASE_URL : 'http://localhost'}:3000`;
+const URL = `${import.meta.env.PROD || import.meta.env.NODE_ENV === 'production' ? import.meta.env.BASE_URL : 'http://localhost'}:3000`;
 
 export const fetchTodos = async (dispatch: React.Dispatch<Action>) => {
   try {
