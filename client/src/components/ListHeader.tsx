@@ -11,8 +11,11 @@ export interface ListHeaderProps {
 }
 
 const ListHeader: React.FC<ListHeaderProps> = ({ name, button }) => {
-  const dialogRef = useRef<React.LegacyRef<HTMLDialogElement>>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const dispatch = useContext(TodoDispatchContext);
+
+  const handleShowModal = () => dialogRef.current?.showModal();
+  const handleCloseModal = () => dialogRef.current?.close();
 
   const handleDeleteAllTasks = () => {
     dispatch && deleteTodos(dispatch);
@@ -21,8 +24,8 @@ const ListHeader: React.FC<ListHeaderProps> = ({ name, button }) => {
   return (
     <>
       <div className={styles.container}>
-        <h2 className={!button && styles.underline}>{name}</h2>
-        {button && <button className={styles.button} onClick={() => dialogRef?.current?.showModal()}>
+        <h2 className={!button ? styles.underline : undefined}>{name}</h2>
+        {button && <button className={styles.button} onClick={handleShowModal}>
           <Trash />
           Delete all tasks
         </button>}
@@ -31,7 +34,7 @@ const ListHeader: React.FC<ListHeaderProps> = ({ name, button }) => {
         <form method='dialog'>
           Are you sure?
           <div className={styles.actions} >
-            <button className={styles.cancel} onClick={() => dialogRef?.current?.close()}>Cancel</button>
+            <button className={styles.cancel} onClick={handleCloseModal}>Cancel</button>
             <button className={styles.confirm} onClick={handleDeleteAllTasks}>Confirm</button>
           </div>
         </form>

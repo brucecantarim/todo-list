@@ -7,7 +7,7 @@
     "dev": "npx nodemon",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest",
-    "start": "node server.ts"
+    "start": "ts-node --esm server.ts"
   },
   "dependencies": {
     "better-sqlite3": "^8.3.0",

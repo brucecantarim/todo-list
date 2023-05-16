@@ -44,7 +44,7 @@ const reducer = (state: TodoState, action: Action): TodoState => {
       return {
         ...state,
         todos: [...state.todos.filter(item => item.id !== action.payload.id)],
-        imcompletedTodos: [...state.incompletedTodos.filter(item => item.id !== action.payload.id)],
+        incompletedTodos: [...state.incompletedTodos.filter(item => item.id !== action.payload.id)],
         completedTodos: [...state.completedTodos.filter(item => item.id !== action.payload.id)]
       };
     case 'DELETE_TODOS':
