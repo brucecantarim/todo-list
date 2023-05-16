@@ -8,3 +8,11 @@
   box-shadow: var(--background-color) 0 .5rem 2rem, var(--background-color) 0 0 0 1px;
   border-radius: 1rem;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+}

@@ -89,3 +89,25 @@ export const deleteTodo = async (dispatch: React.Dispatch<Action>, id: number) =
   }
 };
 
+export const deleteTodos = async (dispatch: React.Dispatch<Action>) => {
+  try {
+    const response = await fetch(`${URL}/api/todos`, {
+      method: 'delete',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+    const { success } = await response.json();
+    if (success) {
+      dispatch({ type: 'DELETE_TODOS', payload: success });
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const setFilter = (filter: string): Action => ({
+  type: 'SET_FILTER',
+  payload: filter,
+});

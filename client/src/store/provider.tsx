@@ -8,6 +8,7 @@ const initialState: TodoState = {
   todos: [],
   incompletedTodos: [],
   completedTodos: [],
+  filter: '',
 };
 
 export const TodoStateContext = createContext<TodoState>(initialState);

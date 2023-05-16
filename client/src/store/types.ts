@@ -10,6 +10,7 @@ export interface TodoState {
   todos: Todo[];
   incompletedTodos: Todo[];
   completedTodos: Todo[];
+  filter: string;
 }
 
 export interface Action {

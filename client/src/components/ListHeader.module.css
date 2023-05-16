@@ -4,13 +4,25 @@
   align-items: center;
 }
 
+.underline {
+  width: 100%;
+  border-bottom: .1rem solid var(--transparent-white);
+}
+
 .button {
   display: flex;
   align-items: center;
   gap: 1ch;
+  background: none;
+  color: var(--red);
+}
+
+.button:hover {
+  border-color: var(--red);
 }
 
 .dialog {
+  border-radius: var(--border-radius);
   text-align: center;
 }
 

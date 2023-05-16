@@ -11,7 +11,8 @@ const AddItemInput = () => {
     setInputValue(value);
   };
 
-  const handleClick = (): void => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
     if (dispatch && inputValue) {
       createTodo(dispatch, inputValue);
       setInputValue('');
@@ -19,12 +20,12 @@ const AddItemInput = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <input value={inputValue} onChange={(event) => handleChange(event.target.value)} />
-      <button className={styles.button} onClick={handleClick}>
+    <form className={styles.container} onSubmit={handleSubmit}>
+      <input value={inputValue} onChange={(event) => handleChange(event.target.value)} placeholder="New task..." />
+      <button className={styles.button} type='submit'>
         Add
       </button>
-    </div>
+    </form>
   );
 };
 
