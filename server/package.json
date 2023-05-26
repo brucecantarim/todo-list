@@ -6,7 +6,7 @@
     "dev": "npx nodemon",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest",
-    "prestart": "npx pnpm install",
+    "prestart": "npx pnpm install --no-frozen-lockfile",
     "start": "npx ts-node --esm server.ts"
   },
   "dependencies": {
