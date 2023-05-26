@@ -9,9 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (_, res) => {
-  res.send('Server is running. Go to "/api/todos" to make your requests.');
-});
+app.use(express.static('../client/dist/'));
 
 // Mount the todo routes
 todoRoutes(app);

@@ -7,7 +7,7 @@
     "dev": "npx nodemon",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest",
-    "prestart": "yarn install",
+    "prestart": "npx pnpm install",
     "start": "ts-node --esm server.ts"
   },
   "dependencies": {
